@@ -6,7 +6,6 @@ except ImportError:
     print("Scripts unable to initialize.")
     exit()
 
-getimage.ffmpegInitialize()
-getimage.v4l2initialize()
+getimage.openCVInitialize()
+getimage.getFrame()
 
-print(1)
