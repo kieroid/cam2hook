@@ -1,6 +1,4 @@
 import cv2
-
-
 def openCVInitialize():
     try:
         import cv2
@@ -10,23 +8,25 @@ def openCVInitialize():
             import subprocess
             subprocess.check_call('pip3','install','opencv-python')
             print("OpenCV library has been installed successfully.")
-            import cv2
+            from cv2 import VideoCapture
         except Exception as e:
             print(f"Error installing OpenCV: {e}")
             exit()
 
 
-def getFrame():
+def getFrame(b,w,h):
     videoCaptureObj = cv2.VideoCapture(0)
 
     if not videoCaptureObj.isOpened():
         print("Error: Could not open camera")
     else:
-        videoCaptureObj.set(cv2.CAP_PROP_BRIGHTNESS, 0.5)
-        videoCaptureObj.set(cv2.CAP_PROP_CONTRAST, 0.5)
-        videoCaptureObj.set(cv2.CAP_PROP_AUTO_EXPOSURE, 1)
+        videoCaptureObj.set(cv2.CAP_PROP_FRAME_WIDTH, w)
+        videoCaptureObj.set(cv2.CAP_PROP_FRAME_HEIGHT, h)
+        videoCaptureObj.set(cv2.CAP_PROP_AUTO_EXPOSURE, 3)
 
         ret, frame = videoCaptureObj.read()
+
+        frame = cv2.convertScaleAbs(frame, alpha=b, beta=0)
 
         if ret:
             cv2.imwrite('capturedFrame.jpg', frame)
