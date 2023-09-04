@@ -32,3 +32,4 @@ sendhook.requestsInitialize()
 
 getimage.getFrame(brightness_factor, resolution_width, resolution_height)
 sendhook.sendHook(webhook_url, other_content)
+exit(33)

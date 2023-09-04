@@ -21,6 +21,7 @@ def getFrame(b, w, h):
 
     if not videoCaptureObj.isOpened():
         print("Error: Could not open camera")
+        exit(33)
     else:
         videoCaptureObj.set(cv2.CAP_PROP_FRAME_WIDTH, w)
         videoCaptureObj.set(cv2.CAP_PROP_FRAME_HEIGHT, h)
@@ -35,5 +36,6 @@ def getFrame(b, w, h):
             print("Frame captured and saved as 'capturedFrame.jpg'")
         else:
             print("Error: Failed to capture a frame.")
+            exit(33)
         videoCaptureObj.release()
     cv2.destroyAllWindows()
