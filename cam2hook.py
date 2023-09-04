@@ -1,7 +1,12 @@
-from scripts import getimage
-from scripts import sendhook
-
 try:
+    from scripts import getimage
+    from scripts import sendhook
+    print("Initialized Scripts.")
+except ImportError:
+    print("Scripts unable to initialize.")
+    exit()
 
-except:
-    print("An exception has occurred.")
+getimage.ffmpegInitialize()
+getimage.v4l2initialize()
+
+print(1)
