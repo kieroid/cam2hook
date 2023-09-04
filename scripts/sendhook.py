@@ -18,12 +18,15 @@ def requestsInitialize():
 
 
 def sendHook(url, payload):
-    with open("capturedFrame.jpg", 'rb') as f:
+    with open('capturedFrame.jpg', 'rb') as f:
         image_data = f.read()
-        payload["file"] = ("image.jpg", image_data)
 
-    response = requests.post(url, files=payload)
-    if response.status_code == 204:
+    files = {
+        'file': ('capturedFrame.jpg', image_data)
+    }
+
+    response = requests.post(url, data=payload, files=files)
+    if response.status_code == 200:
         print("Image sent successfully")
     else:
         print(f"Error sending image: {response.status_code}")
