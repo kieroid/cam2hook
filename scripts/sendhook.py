@@ -1,5 +1,7 @@
 import requests
 import os
+
+
 def requestsInitialize():
     try:
         import requests
@@ -7,14 +9,15 @@ def requestsInitialize():
         print("requests not found. Installing...")
         try:
             import subprocess
-            subprocess.check_call('pip3','install','requests')
+            subprocess.check_call('pip3', 'install', 'requests')
             print("requests has been installed successfully.")
             import requests
         except Exception as e:
             print(f"Error installing requests: {e}")
             exit()
 
-def sendHook(url,payload):
+
+def sendHook(url, payload):
     with open("capturedFrame.jpg", 'rb') as f:
         image_data = f.read()
         payload["file"] = ("image.jpg", image_data)

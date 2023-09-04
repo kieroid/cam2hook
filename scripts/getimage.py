@@ -1,4 +1,6 @@
 import cv2
+
+
 def openCVInitialize():
     try:
         import cv2
@@ -6,7 +8,7 @@ def openCVInitialize():
         print("OpenCV library not found. Installing...")
         try:
             import subprocess
-            subprocess.check_call('pip3','install','opencv-python')
+            subprocess.check_call('pip3', 'install', 'opencv-python')
             print("OpenCV library has been installed successfully.")
             from cv2 import VideoCapture
         except Exception as e:
@@ -14,7 +16,7 @@ def openCVInitialize():
             exit()
 
 
-def getFrame(b,w,h):
+def getFrame(b, w, h):
     videoCaptureObj = cv2.VideoCapture(0)
 
     if not videoCaptureObj.isOpened():
